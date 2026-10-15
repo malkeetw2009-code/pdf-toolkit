@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,13 +19,34 @@
         <sidebar>
             <h3 style="margin-bottom: 1rem; font-size: 1rem; color: #94a3b8;">श्रेणियाँ</h3>
             <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-                <li><a href="#" style="color: var(--text-primary); text-decoration: none;">सभी टूल्स (25)</a></li>
+                <li><a href="#" id="homeLink" style="color: var(--text-primary); text-decoration: none;">सभी टूल्स (25)</a></li>
             </ul>
         </sidebar>
 
         <content-area>
-            <div id="toolsGrid" class="tools-grid">
-                <!-- JavaScript द्वारा गतिशील रूप से टूल्स लोड होंगे -->
+            <!-- टूल्स ग्रिड -->
+            <div id="toolsGrid" class="tools-grid"></div>
+
+            <!-- वास्तविक टूल वर्कस्पेस (शुरुआत में छुपा हुआ) -->
+            <div id="toolWorkspace" class="workspace" style="display: none;">
+                <button id="backButton" style="width: fit-content; background: #334155; margin-bottom: 1rem;">← सभी टूल्स पर वापस जाएं</button>
+                <h2 id="activeToolTitle">Tool Title</h2>
+                <p id="activeToolDesc" style="color: var(--text-secondary);">Tool description goes here.</p>
+                
+                <div id="dropzone" class="dropzone">
+                    <p>📁 फाइलें यहाँ खींच कर लाएं (Drag & Drop) या क्लिक करके चुनें</p>
+                    <input type="file" id="fileInput" multiple style="display: none;" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+
+                <div id="fileList" style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);"></div>
+
+                <button id="processBtn" style="margin-top: 1rem; display: none;">प्रक्रिया शुरू करें (Process)</button>
+
+                <div class="progress-container" id="progressContainer" style="margin-top: 1rem;">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div id="resultContainer" style="margin-top: 1.5rem;"></div>
             </div>
         </content-area>
     </div>
