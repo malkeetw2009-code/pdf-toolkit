@@ -1,0 +1,45 @@
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --danger-color: #ef4444;
+  --border-color: #334155;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
+
+header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.logo { font-size: 1.5rem; font-weight: bold; color: var(--accent-color); }
+.search-box input { padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-primary); width: 250px; }
+
+.main-container { display: flex; flex: 1; overflow: hidden; }
+sidebar { width: 260px; background: var(--card-bg); border-right: 1px solid var(--border-color); padding: 1.5rem; overflow-y: auto; }
+content-area { flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 2rem; }
+
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+.tool-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 0.5rem; }
+.tool-card:hover { transform: translateY(-3px); border-color: var(--accent-color); }
+.tool-card h3 { font-size: 1.1rem; color: var(--text-primary); }
+.tool-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+.workspace { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; display: none; flex-direction: column; gap: 1.5rem; }
+.workspace.active { display: flex; }
+
+.dropzone { border: 2px dashed var(--border-color); border-radius: 12px; padding: 3rem; text-align: center; cursor: pointer; background: rgba(255,255,255,0.02); transition: background 0.2s; }
+.dropzone:hover { background: rgba(59, 130, 246, 0.05); border-color: var(--accent-color); }
+
+button { background: var(--accent-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+button:hover { background: var(--accent-hover); }
+button:disabled { background: var(--border-color); cursor: not-allowed; }
+
+.progress-container { width: 100%; background: var(--border-color); border-radius: 4px; overflow: hidden; height: 8px; display: none; }
+.progress-bar { width: 0%; height: 100%; background: var(--accent-color); transition: width 0.3s; }
+
+@media(max-width: 768px) {
+  .main-container { flex-direction: column; }
+  sidebar { width: 100%; max-height: 150px; }
+}
